@@ -14,7 +14,9 @@ const app = express()
 connectDB()
 
 // Middleware setup
-app.use(cors({ origin: 'http://localhost:5173' }))
+app.use(cors({
+  origin: ['http://localhost:5173', 'https://tranquil-caramel-8abffe.netlify.app']
+}))
 app.use(bodyParser.json())
 app.use(express.json())
 
