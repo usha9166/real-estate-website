@@ -27,7 +27,7 @@ function AdminDashboard() {
 
   const fetchProperties = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/properties')
+      const response = await axios.get('https://real-estate-website-zdvn.onrender.com/api/properties')
       setProperties(response.data)
       setLoading(false)
     } catch (err) {
@@ -53,11 +53,11 @@ function AdminDashboard() {
 
     try {
       if (editId) {
-        await axios.put(`http://localhost:5000/api/properties/${editId}`, data, {
+        await axios.put(`https://real-estate-website-zdvn.onrender.com/api/properties/${editId}`, data, {
           headers: { Authorization: `Bearer ${token}` }
         })
       } else {
-        await axios.post('http://localhost:5000/api/properties', data, {
+        await axios.post('https://real-estate-website-zdvn.onrender.com/api/properties', data, {
           headers: { Authorization: `Bearer ${token}` }
         })
       }
@@ -94,7 +94,7 @@ function AdminDashboard() {
     if (!window.confirm('Are you sure you want to delete this property?')) return
     try {
       const token = localStorage.getItem('token')
-      await axios.delete(`http://localhost:5000/api/properties/${id}`, {
+      await axios.delete(`https://real-estate-website-zdvn.onrender.com/api/properties/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       })
       fetchProperties()

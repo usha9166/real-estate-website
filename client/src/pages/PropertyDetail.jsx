@@ -16,7 +16,7 @@ function PropertyDetail() {
   useEffect(() => {
     const fetchProperty = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/properties/${id}`)
+        const response = await axios.get(`https://real-estate-website-zdvn.onrender.com/api/properties/${id}`)
         setProperty(response.data)
         setLoading(false)
       } catch (err) {
@@ -40,7 +40,7 @@ function PropertyDetail() {
     }
 
     try {
-      await axios.post('http://localhost:5000/api/inquiries', {
+      await axios.post('https://real-estate-website-zdvn.onrender.com/api/inquiries', {
         ...formData,
         propertyId: property._id,
         propertyTitle: property.title

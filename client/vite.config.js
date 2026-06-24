@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:5000',
+        target: 'https://real-estate-website-zdvn.onrender.com',
         changeOrigin: true,
       }
     }

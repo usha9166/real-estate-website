@@ -40,7 +40,7 @@ if (!emailRegex.test(formData.email)) {
     try {
       setLoading(true)
       const response = await axios.post(
-        'http://localhost:5000/api/auth/register',
+        'https://real-estate-website-zdvn.onrender.com/api/auth/register',
         formData
       )
       localStorage.setItem('token', response.data.token)

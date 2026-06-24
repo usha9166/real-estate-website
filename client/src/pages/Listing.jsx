@@ -23,7 +23,7 @@ function Listing() {
   const fetchProperties = async (filterParams = {}) => {
     try {
       setLoading(true)
-      const response = await axios.get('http://localhost:5000/api/properties', {
+      const response = await axios.get('https://real-estate-website-zdvn.onrender.com/api/properties', {
         params: filterParams
       })
       setProperties(response.data)
