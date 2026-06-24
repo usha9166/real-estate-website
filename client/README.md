@@ -2,8 +2,12 @@
 
 A full-stack real estate listing website built as part of Web Development Internship.
 
+## Live Demo
+- 🌐 Frontend: https://tranquil-caramel-8abffe.netlify.app
+- 🔧 Backend API: https://real-estate-website-zdvn.onrender.com
+
 ## Project Overview
-Platform allows users to browse, search and inquire about properties for sale and rent across India. Built with React.js frontend connected to a Node.js/Express.js REST API backend with MongoDB database.
+Platform allows users to browse, search and inquire about properties for sale and rent across India. Built with React.js frontend connected to a Node.js/Express.js REST API backend with MongoDB Atlas database.
 
 ## Tech Stack
 
@@ -16,10 +20,15 @@ Platform allows users to browse, search and inquire about properties for sale an
 ### Backend (Completed ✅)
 - Node.js
 - Express.js
-- MongoDB
+- MongoDB Atlas
 - Mongoose
 - JWT (Authentication)
 - bcryptjs (Password Hashing)
+
+### Deployment
+- Frontend: Netlify
+- Backend: Render
+- Database: MongoDB Atlas
 
 ## Features
 
@@ -49,10 +58,7 @@ Platform allows users to browse, search and inquire about properties for sale an
 - Admin link in navbar (admin only)
 - Logout functionality
 - Code refactoring with comments
-
-### Upcoming 🔄
-- Cloud deployment (Netlify + Render)
-- Final documentation
+- Deployed on Netlify + Render + MongoDB Atlas
 
 ## Project Structure
 
@@ -139,4 +145,4 @@ node seed.js
 | Week 5 | Auth (JWT), Search & Filter | ✅ Complete |
 | Week 6 | Detail page, Admin dashboard | ✅ Complete |
 | Week 7 | Responsive design, Bug fixes, Refactoring | ✅ Complete |
-| Week 8 | Cloud deployment, Documentation | 🔄 Upcoming |
+| Week 8 | Cloud deployment, Documentation | ✅ Complete |
