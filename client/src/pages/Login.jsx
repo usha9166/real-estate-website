@@ -20,26 +20,25 @@ function Login() {
     e.preventDefault()
     setError('')
 
-    //login check
-     const user = localStorage.getItem('token')
-  if (!user) {
-    setError('Please Login, then sunbmit Inquiry!')
-    return
-  }
-
-    if (!formData.name  || !formData.email || !formData.phone || !formData.message) {
-      setError('must fill all fields!')
+    // 1. Sirf Email aur Password ka check hona chahiye yahan
+    if (!formData.email || !formData.password) {
+      setError('Please enter both email and password!')
       return
     }
 
+    // 2. API call to authenticate user
     try {
       setLoading(true)
       const response = await axios.post(
         'https://real-estate-website-zdvn.onrender.com/api/auth/login',
         formData
       )
+      
+      // Token and User data save karna
       localStorage.setItem('token', response.data.token)
       localStorage.setItem('user', JSON.stringify(response.data.user))
+      
+      // Successfully login hone ke baad homepage par bhejna
       navigate('/')
     } catch (err) {
       setError(err.response?.data?.message || 'Login failed!')
