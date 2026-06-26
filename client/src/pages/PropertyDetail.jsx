@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom' // useNavigate add kiya redirect karne ke liye
 import axios from 'axios'
 import './PropertyDetail.css'
 
 function PropertyDetail() {
   const { id } = useParams()
+  const navigate = useNavigate() // Navigation initialize kari
   const [property, setProperty] = useState(null)
   const [loading, setLoading] = useState(true)
   const [formData, setFormData] = useState({
@@ -34,20 +35,39 @@ function PropertyDetail() {
     e.preventDefault()
     setError('')
 
+    // 1. Check karo ki user logged in hai ya nahi
+    const token = localStorage.getItem('token')
+    if (!token) {
+      setError('Inquiry bhejne ke liye pehle login karein!')
+      // Optional: Agar aap direct login page par bhejna chahti hain toh niche wali line use karein
+      // navigate('/login')
+      return
+    }
+
+    // 2. Form fields validation
     if (!formData.name || !formData.email || !formData.phone || !formData.message) {
       setError('Saare fields bharo!')
       return
     }
 
+    // 3. API call with JWT Token
     try {
-      await axios.post('https://real-estate-website-zdvn.onrender.com/api/inquiries', {
-        ...formData,
-        propertyId: property._id,
-        propertyTitle: property.title
-      })
+      await axios.post(
+        'https://real-estate-website-zdvn.onrender.com/api/inquiries', 
+        {
+          ...formData,
+          propertyId: property._id,
+          propertyTitle: property.title
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}` // Backend validation ke liye token bheja
+          }
+        }
+      )
       setSubmitted(true)
     } catch (err) {
-      setError('Inquiry submit karne mein error aaya!')
+      setError(err.response?.data?.message || 'Inquiry submit karne mein error aaya!')
     }
   }
 

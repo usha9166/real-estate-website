@@ -20,8 +20,15 @@ function Login() {
     e.preventDefault()
     setError('')
 
-    if (!formData.email || !formData.password) {
-      setError('Saare fields bharo!')
+    //login check
+     const user = localStorage.getItem('token')
+  if (!user) {
+    setError('Please Login, then sunbmit Inquiry!')
+    return
+  }
+
+    if (!formData.name  || !formData.email || !formData.phone || !formData.message) {
+      setError('must fill all fields!')
       return
     }
 
